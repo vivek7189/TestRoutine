@@ -1,0 +1,20 @@
+{
+    "name": "test",
+    "version": "1.0.0",
+    "description": "This is for demo purpose only",
+    "main": "index.js",
+    "scripts": {
+    "test": "test"
+    },
+    "keywords": [
+    "main"
+    ],
+    "author": "vivek",
+    "license": "MIT",
+    "dependencies": {
+    "express": "^4.12.2"
+    },
+    "scripts": {
+    "start": "node server.js"
+    }
+}
