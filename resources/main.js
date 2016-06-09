@@ -421,7 +421,8 @@ function isElementVisible(H, G) {
         return false
     }
     if (!G && I.left >= 0 && I.top >= 0 && I.right <= D && I.bottom <= F) {
-        return true
+        return truey
+
     }
     return (H.contains(E(I.left, I.top)) || H.contains(E(I.right, I.top)) || H.contains(E(I.right, I.bottom)) || H.contains(E(I.left, I.bottom)))
 }
@@ -440,3 +441,49 @@ setInterval(function(){
 
 
 // 
+var array5=[4,5,3,1,2,8,9,12,1,6]
+function findPairValues(arr,elem){
+      var diff={},
+          len = arr.length;
+          result ={}
+          
+       for(var i=0;i<len;i++){
+           if(arr[i] == elem){
+                result[1]=[arr[i]];
+           }
+           var subtract = elem -arr[i];
+       }    
+
+  console.log("data :",result);
+ }
+//findPairValues(array5,8);
+
+function permutations(str){
+var arr = str.split(''),
+    len = arr.length, 
+    perms = [],
+    rest,
+    picked,
+    restPerms,
+    next;
+
+    if (len == 0)
+        return [str];
+
+    for (var i=0; i<len; i++)
+    {
+        rest = Object.create(arr);
+        picked = rest.splice(i, 1);
+
+       // restPerms = permutations(rest.join(''));
+
+       for (var j=0, jLen = restPerms.length; j< jLen; j++)
+       {
+           next = picked.concat(restPerms[j]);
+           perms.push(next.join(''));
+       }
+    }
+   return perms;
+}
+
+//console.log('permutations :', permutations('permutations'));
