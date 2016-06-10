@@ -487,3 +487,156 @@ var arr = str.split(''),
 }
 
 //console.log('permutations :', permutations('permutations'));
+
+
+
+window.ui = window.ui || {};
+
+  /**  @constructor */
+  ui.ListView = function(element, collection) {
+    this.el = element;
+    this.cellHeight = 30;
+    this.collection = collection;
+
+    // Find the first element with class 'Template' and use as a row template
+    var tt = this.el.getElementsByClassName('Template');
+    if (tt.length > 0) {
+      var t = tt[0];
+      this.template = t;
+      t.parentNode.removeChild(t);
+    }
+
+    this.content = document.createElement('div');
+    this.el.style.overflow = 'auto';
+    this.el.appendChild(this.content);
+    this.cells = [];
+    this.listeners = [];
+
+    // Juggle rows on scroll
+    this.el.addEventListener('scroll', this.redraw.bind(this));
+
+    // Ensure we have enough rows.
+    window.addEventListener('resize', this.redraw.bind(this));
+
+    // Get us started
+    this.redraw();
+  };
+
+  /** Ensure we have enough physical lines to fill the screen */
+  ui.ListView.prototype.ensure = function(desired) {
+      while (this.cells.length < desired) {
+        var cell = new ui.Template(this, this.template);
+        cell.element.style.position = 'absolute';
+        cell.element.style.y = 0;
+        cell.element.style.x = 0;
+        cell.element.style.height = this.cellHeight + 'px';
+        cell.element.style.width = '100%';
+        this.content.appendChild(cell.element);
+        this.cells.push(cell);
+      }
+    };
+
+  /** Re-render the rows */
+  ui.ListView.prototype.redraw = function() {
+    var cellh = this.cellHeight;
+    var oheight = this.el.offsetHeight;
+    var top = this.el.scrollTop;
+    var topRow = ~~(top / cellh);
+    var len = this.collection.length;
+
+    this.content.style.height = (len * cellh) + 'px';
+
+    var slosh = 10;
+
+    var desiredRows = ~~(oheight / cellh + slosh);
+    this.ensure(desiredRows);
+
+    var start = Math.max(topRow - slosh / 2, 0);
+    var end = Math.min(len, start + desiredRows);
+    start = Math.max(0, end - desiredRows);
+
+    var rows = [];
+    for (var i = start; i < start + this.cells.length; i++) {
+      rows.push(i);
+      var cell = this.cells[i % this.cells.length];
+      if (i < len) {
+        var item = this.collection[i];
+        cell.setItem(item);
+        cell.setTop(cellh * i);
+        cell.element.style.display = 'block';
+      } else {
+        cell.element.style.display = 'none';
+      }
+    }
+  };
+
+
+  /** @constructor */
+  ui.Template = function(listView, node) {
+    this.listView = listView;
+    this.db = listView.collection;
+
+    var tasks = [];
+    this.tasks = tasks;
+
+    this.element = node.cloneNode(true);
+
+    // This recursive function sets up our "tasks" which fill in data from 
+    function proc(node) {
+      var cc = node.childNodes;
+      for (var i = 0; i < cc.length; i++) {
+        var child = cc[i];
+        // TODO - Handle attributes and more complex text substitution.
+        // e.g. sequence of "text",key extracted from '{{title}} by {{author}}' or 'http://{{key}}_{{blah}}.jpg'
+        if (child.nodeType == 3) {
+          var m = child.textContent.match('{{(.*)}}');
+          if (m) {
+            var key = m[1];
+            tasks.push(function(doc) {
+              child.textContent = doc[key] || '';
+            });
+          }
+        } else {
+          proc(child);
+        }
+      }
+    }
+    proc(this.element);
+  };
+
+  ui.Template.prototype.setTop = function(top) {
+      this.element.style.top = top + 'px';
+  };
+
+  ui.Template.prototype.setItem = function(item) {
+    if (item != this.item) {
+      this.item = item;
+      this.tasks.forEach(function(func) { func(item); });
+    }
+  };
+
+// fill some dummy data to table and initialize the table
+function initialize() {
+        var data = [];
+        for (var i=0;i<10000;i++) {
+          data[i] = {'title': 'Title '+i, 'description': 'Description '+i};
+        }
+        var table = document.getElementById('table');
+        // comment this out if you don't want iPad scrolling.
+        //new ui.ScrollController(table);
+        var listView = new ui.ListView(table, data);
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

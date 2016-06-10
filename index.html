@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="resources/style.css">
     <link rel="stylesheet" href="/boot/css/bootstrap.css">
 </head>
-<body ng-app="App">
-   <div ng-controller="mainController" class="container">
+<body  onload='initialize()'>
+   <div ng-controller="mainController" ng-app="App" class="container">
 
        <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
            <!-- Brand and toggle get grouped for better mobile display -->
@@ -71,9 +71,20 @@
                    </footer>
                </div>
            </div>
+
+
+           
+
+
        </div>
    </div>
-
+  
+           <div id="table">
+               <!-- this is expression of table layout-->
+               <div class="Template">
+                  <div class='title'>{{title}}</div><div class='desc'>{{description}}</div>
+              </div>
+          </div>
 </body>
 <script src="resources/lib/angular.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
