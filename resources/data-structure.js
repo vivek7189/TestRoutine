@@ -20,8 +20,7 @@ Linkedlist.prototype = {
             while(temp.next){
                      temp = temp.next;
             }
-            temp.next = node;
-           
+            temp.next = node;     
         }
          this.length++;
     },
@@ -55,14 +54,16 @@ Linkedlist.prototype = {
             var node = this.root;
             var count=0;
            
-            while(node.value !== value){
+            while(node && node.value !== value){
                     node = node.next;
                     console.log('node',node);
                     console.log(++count,node);
+                   if(this.length === count){
+                        console.log("not found");
+                        break;
+                    }
             }
-            if(this.length >count){
-
-            }
+            
             return node;
             
         }
@@ -73,10 +74,14 @@ var ls= new Linkedlist();
 ls.add(8);
 ls.add(9);
 ls.add(91);
-ls.add(99);
-ls.add(910);
-ls.add(1000);
+ls.add(41);
 
 
 
-console.log(ls.find(910));
+
+console.log(ls);
+
+
+
+
+
