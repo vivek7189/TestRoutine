@@ -633,7 +633,38 @@ function initialize() {
 
 
 
+var count=0;
+var df = document.getElementById('table');
+df.onscroll= function(){
+    console.log(++count);
+}
 
+
+
+
+
+
+// below is bad recursive approache as it grows exponentially
+// because wea'r calling Fibonacci two time in side function 
+// That leads to make it complexity of 2^n 
+function Fibonacci(n){
+    if(n == 0){
+        return 0;
+    }
+    if(n == 1){
+      return 1;
+    }
+    return Fibonacci(n-1) + Fibonacci(n-2) ;
+}
+//console.log("fibonicci(5);",Fibonacci(250));
+// Gud eample of recursion
+function factorial(n){
+   if(n ==0){
+       return 1;
+   }
+   return n * factorial(n-1);
+}
+console.log(factorial(6));
 
 
 
