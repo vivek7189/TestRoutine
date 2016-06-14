@@ -11,3 +11,18 @@
 var server = app.listen(8000,function (){
     console.log('Listening on port :',server.address().port);
 })
+
+
+
+
+infinteLoop();
+var j=100;
+function infinteLoop(i){
+    if(i<j){
+       setTimeout(function() {
+           infinteLoop(++i);
+           console.log("tt",i);
+       }, 1);                     
+    }
+ 
+}

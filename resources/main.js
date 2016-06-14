@@ -427,7 +427,15 @@ function isElementVisible(H, G) {
     return (H.contains(E(I.left, I.top)) || H.contains(E(I.right, I.top)) || H.contains(E(I.right, I.bottom)) || H.contains(E(I.left, I.bottom)))
 }
 
-
+window.onscroll=function(){
+    var flag=isElementVisible(firstImage,false)
+   
+    if(flag){
+   alert('show')
+    }else{
+       // alert('hide');
+    }
+}
 var idMain= document.querySelectorAll('img');
 
 var firstImage = idMain[2];
@@ -488,6 +496,18 @@ var arr = str.split(''),
 
 //console.log('permutations :', permutations('permutations'));
 
+// infinteLoop loop without nonblocking UI
+//infinteLoop(0);
+var j=1000000;
+
+function infinteLoop(i){
+    if(i<j){
+       setTimeout(function() {
+           infinteLoop(++i);
+           console.log(i);
+       }, 1);                     
+    }
+}
 
 
 window.ui = window.ui || {};
@@ -665,6 +685,7 @@ function factorial(n){
    return n * factorial(n-1);
 }
 console.log(factorial(6));
+
 
 
 
