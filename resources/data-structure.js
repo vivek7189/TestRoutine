@@ -89,11 +89,12 @@ console.log(ls);
 
 function makeIt(name,last,callback){
    console.log("name",name);
-   callback(name,last);
+   var fnname="nameit"
+   callback(name,last,fnname);
 }
 
-function callbackFn(last,namec){
-  console.log("fgffhgfhfh",last,namec);
+function callbackFn(last,namec,fnname){
+  console.log("fgffhgfhfh fnname",last,namec,fnname);
 }
 
 
@@ -153,7 +154,7 @@ ls2.add(28);
 ls2.add(29);
 ls2.add(30);
 
-//ls2.root.next.next.next.next.next.next = ls2.root;
+ls2.root.next.next.next.next.next.next = ls2.root;
 
 console.log("dfd : ",ls2);
 
@@ -271,3 +272,87 @@ var Mergesort = (function() {
 })();
 
 console.log(Mergesort.sort(mergeArr))
+
+
+// make a binary saerch tree from an sorted array
+
+var binaryArr=[1,4,5,6,7,8,9];
+
+var binaryTree=function(){
+             function Node(data){
+                    this.data=data;
+                    this.left=null;
+                    this.right=null;
+             }
+             function arrayTobst(arr,start,end){
+                 if(start > end ){
+                     return null;
+                 }
+                 var mid =Math.floor((start + end)/2);
+                 var node = new Node(arr[mid]);
+
+                 node.left = arrayTobst(arr,start,mid-1);
+                 node.right =arrayTobst(arr,mid+1,end);
+
+                 return node;
+             }   
+             function findNode(node,key){
+                 if(node === null){
+                        return false;
+                 }
+                 if(node.data === key){
+                        return true;
+                 }
+                 if(node.data > key){
+                     var node= node.left
+                     findNode(node,key);
+                 }
+                 if(node.data < key){
+                     var node= node.right
+                     findNode(node,key);
+                 }
+             }
+             function inorder(node){
+                 
+                   if(node === null){
+                       return;
+                   }
+                   inorder(node.left);
+                   console.log(node.data);
+                   inorder(node.right);
+             }
+             function preorder(){
+                 if(node === null){
+                       return;
+                   }
+                   console.log(node.data);
+                   inorder(node.left);
+                   inorder(node.right);
+             }
+             function postorder(){
+                 if(node === null){
+                       return;
+                   }
+                   postorder(node.left);
+                   postorder(node.right);
+                   console.log(node.data);
+             }
+             return{
+                 Node:Node,
+                 arrayTobst:arrayTobst,
+                 findNode:findNode,
+                 inorder:inorder,
+                 preorder:preorder,
+                 postorder:postorder
+             }
+};
+var btTree =new binaryTree();
+var root = btTree.arrayTobst(binaryArr,0,binaryArr.length);
+console.log('binaryTree',btTree,root);
+
+console.log('binaryTree inorder',btTree.inorder(root));
+
+
+console.log('binaryTree findNode',btTree.findNode(root,7));
+
+
