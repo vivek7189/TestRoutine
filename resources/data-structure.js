@@ -348,7 +348,7 @@ var binaryTree=function(){
 };
 var btTree =new binaryTree();
 var root = btTree.arrayTobst(binaryArr,0,binaryArr.length);
-console.log('binaryTree',btTree,root);
+ console.log('binaryTree',btTree,root);
 
 console.log('binaryTree inorder',btTree.inorder(root));
 
@@ -356,3 +356,124 @@ console.log('binaryTree inorder',btTree.inorder(root));
 console.log('binaryTree findNode',btTree.findNode(root,7));
 
 
+
+
+
+
+
+// 
+
+function optimalCoin(n){
+
+            if(n <2){
+                    return n;
+            }
+            else {
+                var count1 =  Math.floor(n/2)
+                var count2=Math.floor(n/3)
+                var count3 =Math.floor(n/4)
+                var count4=Math.floor(n/5);
+
+                console.log("count :",count);
+            }
+}
+
+ optimalCoin(18);
+
+
+
+// function to implement a queue
+
+function Queue(){
+    this.head=null;
+    this.data=[];
+}
+
+Queue.prototype ={
+    constructor:constructor,
+    enque : function (value){
+        if(value != null){
+             this.data.push(value);   
+        }
+    },
+    dequeue : function (){
+            return this.data.shift();
+    }
+}
+
+
+
+
+
+
+
+// implement graphs Breadth first search
+
+
+var bfs = function (){
+    var adjancyArray=[];
+
+    var Graph = function (v){
+            this.length=v;
+            this.adjancyList =new Array(v);
+            for(var i=0;i<v;i++){
+                this.adjancyList[i]= new Linkedlist();     
+            }
+
+    }
+
+    var addEdge = function(a,b){
+            this.adjancyList[a].add(b);
+    }
+
+    var BFSTraverse = function (start){
+            var s= start;
+            var arr=[];
+            var queue = new Queue();
+            var adjList=this.adjancyList;
+            queue.enque(s);
+            arr.push(s);
+            var adj =adjList[s].root
+            while(queue.data.length){
+                s = queue.dequeue();    
+                console.log("traverse the graph :",s);
+                while(adj.next !== null){
+                    if(arr.indexOf(adj.value) == -1 ){
+                        queue.enque(adj.value);
+                        arr.push(adj.value);
+                        adj =adj.next;
+                    }
+                }
+                if(adj.next == null){
+                     if(arr.indexOf(adj.value) == -1){
+                        arr.push(adj.value);
+                        queue.enque(adj.value);
+                     }
+                }
+
+            }
+            console.log("bsf push array :",arr,queue);
+    }
+
+
+    return{
+    Graph:Graph,
+    addEdge:addEdge,
+    BFSTraverse:BFSTraverse
+    }
+}
+
+var bfs = new bfs();
+bfs.Graph(5);
+
+bfs.addEdge(0,1);
+bfs.addEdge(0,2);
+bfs.addEdge(1,2);
+bfs.addEdge(2,0);
+bfs.addEdge(2,3);
+bfs.addEdge(3,3);
+bfs.addEdge(1,4);
+bfs.addEdge(0,4);
+
+bfs.BFSTraverse(0);
+console.log("bfs",bfs);
