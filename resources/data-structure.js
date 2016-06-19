@@ -67,6 +67,20 @@ Linkedlist.prototype = {
             return node;
             
         }
+    },
+    reverse : function(){
+        var root =this.root,
+            current,prev,next;
+                current=this.root;
+                while(current !== null){
+                    next = current.next;
+                    current.next = prev;
+                    prev = current;
+                    current = next;
+                }
+                root=prev;
+                console.log("prev prev : ",root);
+
     }
 }
 
@@ -77,7 +91,7 @@ ls.add(91);
 ls.add(41);
 
 
-
+ls.reverse();
 
 console.log(ls);
 
@@ -154,7 +168,7 @@ ls2.add(28);
 ls2.add(29);
 ls2.add(30);
 
-ls2.root.next.next.next.next.next.next = ls2.root;
+//ls2.root.next.next.next.next.next.next = ls2.root;
 
 console.log("dfd : ",ls2);
 
@@ -321,7 +335,7 @@ var binaryTree=function(){
                    console.log(node.data);
                    inorder(node.right);
              }
-             function preorder(){
+             function preorder(node){
                  if(node === null){
                        return;
                    }
@@ -329,7 +343,7 @@ var binaryTree=function(){
                    inorder(node.left);
                    inorder(node.right);
              }
-             function postorder(){
+             function postorder(node){
                  if(node === null){
                        return;
                    }
@@ -337,13 +351,29 @@ var binaryTree=function(){
                    postorder(node.right);
                    console.log(node.data);
              }
+             function mirror(node){
+                 if(node === null){
+                     return false;
+                 }else{
+                     var root =node;
+                     var nodeleft = node.left;
+                     var noderight =node.right;
+
+                     root.left=noderight;
+                     root.right=nodeleft;
+                        mirror(root.left);
+                        mirror(root.right);
+                            console.log(root);
+                 }
+             }
              return{
                  Node:Node,
                  arrayTobst:arrayTobst,
                  findNode:findNode,
                  inorder:inorder,
                  preorder:preorder,
-                 postorder:postorder
+                 postorder:postorder,
+                 mirror:mirror
              }
 };
 var btTree =new binaryTree();
@@ -354,6 +384,8 @@ console.log('binaryTree inorder',btTree.inorder(root));
 
 
 console.log('binaryTree findNode',btTree.findNode(root,7));
+
+btTree.mirror(root);
 
 
 
@@ -477,3 +509,45 @@ bfs.addEdge(0,4);
 
 bfs.BFSTraverse(0);
 console.log("bfs",bfs);
+
+
+
+
+// chekc for balanced paranthesis of some expressions
+var exp= '((a()))';
+function validateExp(exp){
+        console.log('exp',exp);
+        if(exp == ''){
+           return true;
+        }else{
+            var temp=exp.split('');
+            var arr=[];
+            var start =['(','{','['];
+            var end =[')','}',']'];
+            var mapkey ={
+                    "(" :")",
+                    "[" : "]",
+                    "{" : "}"
+            };
+            for(var i=0;i<temp.length;i++){
+                var value=temp[i];
+                    if(start.indexOf(value) >= 0){
+                        arr.push(value);
+                    }else if(end.indexOf(value) >=0){
+                        var key =arr.pop(value)
+                            if(value !== mapkey[key]){
+                                return false;
+                            }
+
+                    }
+            }
+            if(arr.length === 0){
+                return true;
+            }else{
+                return false
+            }
+            
+        }
+}
+
+console.log("validateExp .. :",validateExp(exp))
