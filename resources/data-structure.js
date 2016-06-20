@@ -550,4 +550,35 @@ function validateExp(exp){
         }
 }
 
-console.log("validateExp .. :",validateExp(exp))
+console.log("validateExp .. :",validateExp(exp));
+
+
+
+zigzag(3,"abcdefghijklmnopqrstuvwyz");
+function zigzag(count,string){
+   var str= string;
+
+        for(var i=0;i<str.length;i++){
+                if(i==3){
+                    var space="&nbsp;"
+                    console.log(str[i]);
+                }
+                if(i==4){
+                    var space="&nbsp;"
+                    console.log(space+str[i]);
+                }  
+        }
+}
+
+
+reverseArray([10,7,4,5,6,3,44]);
+function reverseArray(arr){
+        var tt=[];
+        var j=arr.length;
+        for(var i=0;i<arr.length/2;i++){
+                  var temp=arr[j-i];
+                  arr[j-i] =arr[i];   
+                  arr[i]=temp;
+        }
+        console.log("reverse arr is : ",arr);
+}
