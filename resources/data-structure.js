@@ -582,3 +582,25 @@ function reverseArray(arr){
         }
         console.log("reverse arr is : ",arr);
 }
+
+
+// permutation of string
+recPerm("abcd", '');
+
+function recPerm(rest, soFar) {
+    var next;
+    var remaining;
+
+    if (rest == '') {
+        console.log(soFar);
+    } else {
+
+        for (var i = 0; i < rest.length; i++) {
+            remaining = rest.substr(0,i) + rest.substr(i+1,rest.length-1);
+            next = soFar + rest[i];
+            recPerm(remaining, next);
+        }
+
+    }   
+
+}
