@@ -1,4 +1,4 @@
-'use strict';
+
 // linkedlist implementation in javascript
 function Linkedlist(){
    this.root =null;
@@ -603,4 +603,42 @@ function recPerm(rest, soFar) {
 
     }   
 
+}
+
+var  person= {
+          name:'viv',
+          dept :"IT"
+      }
+
+var obj = function(){
+	 _bar = 10;
+     
+	function i_bar(str){
+        var tt =str;
+        str.name='ui';
+        tt.namew="gi";
+        str={gh:"tm"}
+        console.log(person,tt,str);
+        return ++_bar + person;
+    }
+ 
+	return {
+    	bar  : _bar,
+    	i_bar: i_bar
+	}
+};
+
+
+console.log(obj().i_bar(person));
+console.log(person);
+
+// dynamic array in javascript concept
+arraytest([1,4,5,6,7,7]);
+function arraytest(arr){
+    var len=arr.length;
+    // below arr.length and pushing element to array create an infinite loop
+    for(var i=0;i<arr.length;i++){
+        arr.push(i);
+    }
+    console.log(arr);
 }
