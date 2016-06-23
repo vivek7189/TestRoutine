@@ -638,7 +638,29 @@ function arraytest(arr){
     var len=arr.length;
     // below arr.length and pushing element to array create an infinite loop
     for(var i=0;i<arr.length;i++){
-        arr.push(i);
+        //arr.push(i);
     }
     console.log(arr);
+}
+
+
+// own custome event handler functions;
+
+
+var elem = document.getElementById("main");
+
+$("#table").on("click",'.title', function(){
+    console.log(this);
+})
+
+function isInViewport(elem){
+var cord = elem.getBoundingClientRect();
+console.log("bounding element : ",cord);
+console.log("window.innerHeight : ",window.innerHeight);
+}
+var elementImage = document.querySelector(".image23");
+isInViewport(elementImage);
+
+window.onscroll=function(){
+isInViewport(elementImage);
 }

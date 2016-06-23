@@ -421,7 +421,7 @@ function isElementVisible(H, G) {
         return false
     }
     if (!G && I.left >= 0 && I.top >= 0 && I.right <= D && I.bottom <= F) {
-        return truey
+        return true
 
     }
     return (H.contains(E(I.left, I.top)) || H.contains(E(I.right, I.top)) || H.contains(E(I.right, I.bottom)) || H.contains(E(I.left, I.bottom)))
@@ -431,7 +431,7 @@ window.onscroll=function(){
     var flag=isElementVisible(firstImage,false)
    
     if(flag){
-   alert('show')
+//alert('show')
     }else{
        // alert('hide');
     }
