@@ -664,3 +664,40 @@ isInViewport(elementImage);
 window.onscroll=function(){
 isInViewport(elementImage);
 }
+
+
+// memeory leak examples
+
+function memoryLeak(){
+   var element = document.createElement("audio");
+   element.string= new Array(10).join(new Array(20).join("XXXXX"));
+   document.body.appendChild(element);
+   console.log("element ,",element);
+   element.parentNode.removeChild(element);
+   
+    element = null;
+   console.log("element ,",element.string);
+}
+//setInterval(memoryLeak,1000);
+
+// delete an object parent property
+
+function deleteObj(){
+    var obj= {
+        name:'temp',
+        last:'same',
+        address: {city:'MZN',pin:'42551'}
+    }
+    Object.defineProperties(obj, {
+            'name':{
+            value:'vive',
+            writable:true,
+            configurable:false
+	        }   
+        }
+    );
+//obj =null;
+delete obj.name;
+    console.log("obj.address",obj);
+}
+deleteObj();
