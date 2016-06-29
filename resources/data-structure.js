@@ -701,3 +701,30 @@ delete obj.name;
     console.log("obj.address",obj);
 }
 deleteObj();
+
+function Remove(str, startIndex, count) {
+    return str.substr(0, startIndex) + str.substr(startIndex + count);
+}
+
+function peopleService(string){
+   var str=string;
+   for(var i=0;i<str.length;i++){
+         var mainChar =str[i];
+         var restStrring =Remove(str,i,1);
+         
+         console.log('mainChar : ',mainChar);
+         console.log('restStrring : ',restStrring);
+            makePermute(restStrring,mainChar);
+        
+   }
+}
+
+function  makePermute(str,char){
+    var len =str.length+1;
+        for(var j=0;j<=len;j++){
+                var output = str.substr(0, j) + char + str.substr(j);
+
+                console.log("output : ",output);
+        }
+}
+peopleService("abc");
