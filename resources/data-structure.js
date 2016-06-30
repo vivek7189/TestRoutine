@@ -728,3 +728,48 @@ function  makePermute(str,char){
         }
 }
 peopleService("abc");
+
+
+function printCounter(){
+
+    for(var i=0;i<5;i++){
+         // console.log(i);
+
+          setTimeout(function (i){
+           console.log("counter2 ",i);   
+          }.bind(this,i),2000);
+    }
+}
+function tt(i){
+              console.log("printCounter :",i)
+          }
+printCounter();
+// 1vh  1% of viewport height
+
+
+//substr takes length as funtion arguments
+//slice take stsrt and end of function arguments
+//substring take 
+
+// TypeError: notHoisted is not a function
+
+var notHoisted = function() {
+   console.log("ba34r 6");
+};
+notHoisted(); 
+
+var notHoisted = function() {
+   console.log("ba34r 6 900");
+};
+notHoisted(); 
+
+ function notHoisted1() {
+   console.log("123");
+};
+notHoisted1();
+function notHoisted1() {
+   console.log("12345635");
+};
+notHoisted1();
+
+
