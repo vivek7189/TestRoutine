@@ -688,7 +688,43 @@ console.log(factorial(6));
 
 
 
+function test(){
+    console.log("arguments :",arguments);
+    var srr = Array.prototype.slice.call(arguments,0);
+}
 
 
 
+// getter and setter in javascript
+
+var dummyObj ={
+    firstName : "vivek",
+    lastName : "kumar",
+    
+}
+
+// function to make a div strachable
+var isResizing=false,
+    lastDownX=0;
+var strachable ={
+    element : {
+        container : document.querySelector('.strechContainer'),
+        ltPanel :document.querySelector('.left_panel'),
+        rtPanel :document.querySelector('.right_panel'),
+        dragPoint :document.querySelectorAll('.dragPoint')[0]
+    },
+    getElemenPosition : function (e){
+        isResizing =true;
+        lastDownX =e.clientX;
+        console.log("e.clientX",e.clientX);
+    },
+    resizeElement : function (e){
+        
+    }
+
+
+}
+
+strachable.element.dragPoint.addEventListener('mousedown',strachable.getElemenPosition);
+strachable.element.dragPoint.addEventListener('mousemove',strachable.getElemenPosition);
 
