@@ -716,15 +716,59 @@ var strachable ={
     getElemenPosition : function (e){
         isResizing =true;
         lastDownX =e.clientX;
-        console.log("e.clientX",e.clientX);
+        //console.log("e.clientX",e.clientX);
     },
     resizeElement : function (e){
-        
+                if(!isResizing){
+                        return true;
+                }else{
+                    console.log(this);
+                    var ltPanelWidth=this.element.ltPanel.offsetWidth;
+                    var rtPanelWidth=this.element.rtPanel.offsetWidth;
+                    var dragPoint =this.element.dragPoint;
+                    console.log('ltPanelWidth ',ltPanelWidth);
+                    console.log('rtPanelWidth ',rtPanelWidth);
+                    console.log(e.clientX);
+                    var dragPoinPos =dragPoint.offsetLeft;
+                    console.log("dragPoinPos",dragPoinPos);
+                    this.element.ltPanel.style.width = e.clientX + 'px';
+                    this.element.dragPoint.style.left = e.clientX + "px";
+                    //dragPoint.style.left =
+                }
     }
 
 
 }
 
 strachable.element.dragPoint.addEventListener('mousedown',strachable.getElemenPosition);
-strachable.element.dragPoint.addEventListener('mousemove',strachable.getElemenPosition);
+document.addEventListener('mousemove',strachable.resizeElement.bind(strachable));
+strachable.element.dragPoint.addEventListener('mousedown',function (e){
+    isResizing =true;
+});
+document.addEventListener('mouseup',function (e){
+    isResizing =false;
+});
 
+
+
+var data1= ["Sun,Tue,Wed"]
+function temp3(data1){
+     var dayList=[{day:'Sunday',val:'Sun',checked:false},{day:'Monday',val:'Mon',checked:false},{day:'Tuesday',val:'Tue',checked:false},
+                        {day:'Wednesday',val:'Wed',checked:false},{day:'Thursday',val:'Thu',checked:false},{day:'Friday',val:'Fri',checked:false},{day:'Saturday',val:'Sat',checked:false}];
+                var dayArr = data1[0].split(',');
+                console.log("dayArr :",dayArr);
+
+               dayList.forEach(function (value,index,obj){
+                    console.log("value",value,index,obj);
+
+                    if(dayArr.indexOf(value.val) !== -1){
+                            value.checked = true;
+                    }else{
+                            value.checked = false;
+                    }
+                });
+
+                console.log("ttt",dayList);
+        }
+
+ temp3(data1);       
