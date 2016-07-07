@@ -772,3 +772,60 @@ function temp3(data1){
         }
 
  temp3(data1);       
+
+
+ // json to string conversions
+// always put json in single quote string
+// '{ }' like this  '{"name":8}'
+// not like this  "{'name':8}"
+ var data =[{
+  "id": 1,
+  "first_name": "Lois",
+  "last_name": "Jones",
+  "email": "ljones0@theguardian.com",
+  "gender": "Female",
+  "ip_address": "155.44.228.252"
+}, {
+  "id": 2,
+  "first_name": "Frances",
+  "last_name": "Burke",
+  "email": "fburke1@twitter.com",
+  "gender": "Female",
+  "ip_address": '{"name":8}'
+}, {
+  "id": 3,
+  "first_name": "Jose",
+  "last_name": "Alvarez",
+  "email": "jalvarez2@patch.com",
+  "gender": "Male",
+  "ip_address": "37.141.207.158"
+}];
+ var tempdata =data[1].ip_address;
+ var jsonDatestr =JSON.parse(tempdata);
+ console.log("json data",jsonDatestr.name);
+ var dataString =JSON.stringify(data);
+ console.log('json',dataString);
+ console.log((data));
+
+ var DomCompiler = DomCompiler || function (){
+     'use strict'
+     return {
+         bootstrap : function (){
+             dfd
+         }
+     }
+ }
+
+
+ var session = {
+     'screens' : [],
+     'state' : true
+ }
+session.screens.push({ 'name': 'screenA', 'width': 450, 'height': 250 });
+session.screens.push({ 'name': 'screenB', 'width': 650, 'height': 350 });
+session.screens.push({ 'name': 'screenC', 'width': 750, 'height': 120 });
+console.log("session : ",session);
+localStorage.setItem('session',session);
+
+var getstoredObj = localStorage.getItem("session");
+console.log("getstoredObj :",getstoredObj.state)
