@@ -816,7 +816,7 @@ function temp3(data1){
      }
  }
 
-
+/*
  var session = {
      'screens' : [],
      'state' : true
@@ -825,7 +825,88 @@ session.screens.push({ 'name': 'screenA', 'width': 450, 'height': 250 });
 session.screens.push({ 'name': 'screenB', 'width': 650, 'height': 350 });
 session.screens.push({ 'name': 'screenC', 'width': 750, 'height': 120 });
 console.log("session : ",session);
-localStorage.setItem('session',session);
-
+localStorage.setItem('session',JSON.stringify(session));
+*/
 var getstoredObj = localStorage.getItem("session");
-console.log("getstoredObj :",getstoredObj.state)
+console.log("getstoredObj :",JSON.parse(getstoredObj).screens);
+
+//session.screens.push({ 'name': 'screend', 'width': 750, 'height': 120 });
+//console.log("session updated: ",session);
+
+
+
+
+var vitualization = {
+    table  : function (){
+    }
+}
+
+var temp3={};
+var bValue = 38;
+Object.defineProperty(temp3 ,'name', {
+    get: function() { return bValue; },
+    set : function (newValue){
+            bValue = newValue;
+    },
+    enumerable: true,
+    configurable: true
+});
+temp3.name =85;
+console.log("define1 prop : ",temp3.name);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
