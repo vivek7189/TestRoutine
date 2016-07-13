@@ -855,12 +855,22 @@ temp3.name =85;
 console.log("define1 prop : ",temp3.name);
 
 
+var CustomEvents ={
+    bind : function (element,eventName,handler,aync){
+        var temp = aync !== undefined? async : true;
+            if(element.addEventListener){
+                return
+            }
+    }
+}
 
 
-
-
-
-
+// ASYNCHRONOUS recursion
+/*(function ttttt(){
+  dostuff()
+  setTimeout(ttttt,100)
+})();
+*/
 
 
 
