@@ -875,8 +875,47 @@ var CustomEvents ={
 
 
 
+function arguments(){
+    console.log("arguments list ",arguments);
+    var tt1=Array.prototype.slice.call(arguments);
+    console.log("arguments prop",typeof(arguments));
+}
+arguments(1,2,4,5,6);
 
 
+
+// recursive merge two object
+var obj1={
+    id:124,
+    fname:'markit',
+    name:'Markit',
+    adddress :{
+        city:'ggn',
+        newCity:'London'
+    }
+}
+var obj2 ={
+    id:45,
+    fname:'IHS',
+    name:'IHS-Markit',
+    adddress :{
+        city:'USA',
+        newCity:'London'
+    }
+}
+function MergeRecursive(obj1,obj2){
+    for(var i in obj2){
+        if(obj2.hasOwnProperty(i)){
+            if(obj2[i].constructor === Object){
+                    MergeRecursive(obj1[i],obj2[i]);
+            }else{
+                 obj1[i] = obj2[i]
+            }
+        }
+    }
+    console.log("obj1 :",obj1);
+}
+MergeRecursive(obj1,obj2);
 
 
 
