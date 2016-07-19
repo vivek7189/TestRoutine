@@ -919,28 +919,17 @@ MergeRecursive(obj1,obj2);
 
 
 
-//clone simple object
-function clone (original){
-     this.foo =original.foo;
-     this.bar =original.bar;
-}
-
-//var copy = new clone(orignal);
-
-
-// ja 
 
 
 
-function cloneMethod(src){
-   var obj = Object.create(src);
-   var cloneObj = Object.getPrototypeOf(obj);
-   cloneObj.fname ="viv70"
-   console.log("cloneObj",cloneObj);
-   console.log("obj1",obj1);
-   return cloneObj;
-}
-cloneMethod(obj1);
+
+
+
+
+
+
+
+
 
 
 
