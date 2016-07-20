@@ -1,20 +1,19 @@
 {
-    "name": "test",
-    "version": "1.0.0",
-    "description": "This is for demo purpose only",
-    "main": "index.js",
-    "scripts": {
-    "test": "test"
-    },
-    "keywords": [
-    "main"
-    ],
-    "author": "vivek",
-    "license": "MIT",
-    "dependencies": {
-    "express": "^4.12.2"
-    },
-    "scripts": {
+  "name": "test",
+  "version": "1.0.0",
+  "description": "This is for demo purpose only",
+  "main": "index.js",
+  "scripts": {
     "start": "node server.js"
-    }
+  },
+  "keywords": [
+    "main"
+  ],
+  "author": "vivek",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.12.2",
+    "js-crawler": "^0.3.11",
+    "stream-buffers": "^3.0.0"
+  }
 }
