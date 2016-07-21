@@ -920,12 +920,28 @@ MergeRecursive(obj1,obj2);
 
 
 
+function makeAjaxRequest(options){
+        var http='';
+        if(window.XMLHttpRequest){
+                http = new XMLHttpRequest();
+        }else{
+
+        }
+        http.onreadystatechange = function (){
+            if(http.readyState == 4 && http.status == 200){
+                console.log('data78 from',http.responseText);
+                document.getElementById("demo").innerHTML = http.responseText;
+            }
+        }
+        http.open(options.type,options.url,true);
+        http.send();
+}
 
 
-
-
-
-
+makeAjaxRequest({
+    url:'/api/users',
+    type:'GET'
+})
 
 
 
