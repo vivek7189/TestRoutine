@@ -12,8 +12,12 @@
   "author": "vivek",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.12.2",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "js-crawler": "^0.3.11",
+    "jsonwebtoken": "^7.1.6",
+    "mongoose": "^4.5.7",
+    "morgan": "^1.7.0",
     "stream-buffers": "^3.0.0"
   }
 }

@@ -937,25 +937,73 @@ function makeAjaxRequest(options){
         http.send();
 }
 
-
-makeAjaxRequest({
+var path ={
     url:'/api/users',
     type:'GET'
-})
+}
+//makeAjaxRequest(path)
+
+// pollyfill for Object.create
+
+
+if(typeof Object.create !== 'function'){
+    Object.create = function (o,props){
+      function F(){}
+      F.prototype=o;
+      return new F();
+    }
+
+    var tt = new Foo();
+
+var tt = new Object();
+//tt.[[prototype]] = Foo.prototype
+Foo.call(tt);
+}
+
+
+
+//getName().upperCase().append();
+
+var tt = function main(){
+
+    return{
+        getName :  function (){
+            console.log("viv90");
+            return this;
+        },
+        upperCase : function (){
+            console.log();
+        },
+        append : function (){
+            console.log(this);
+        }
+    }
+}
+
+//console.log("tt object23",tt().getName().upperCase());
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+var tt2 = function main(name){
+        this.name1=name;
+        this.getName =function (){
+            this.name1 =name + "kumar"
+            console.log(this.name1);
+            return this;
+        },
+        this.upperCase = function (){
+            console.log(this.name1.toUpperCase());
+            return this;
+        },
+        this.append = function (){
+            this.name1 = "hii" +name;
+            console.log(this.name1);
+            return this
+        }
+        return this;
+}
+console.log("tt object23",new tt2("kapil").getName().upperCase().append());
 
 
 

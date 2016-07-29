@@ -14,8 +14,8 @@ var server = app.listen(8000,function (){
      console.log('Listening on port :',server.address().port);
 })
 var data='';
-new crawler().configure({depth: 2})
-  .crawl("http://google.com", function onSuccess(page) {
+new crawler().configure({depth: 1})
+  .crawl("http://time.com", function onSuccess(page) {
         data = new Buffer(page.content,'utf8'); // <Buffer 68 65 6c 6c 6f>
          //data.push(page.content)
   });
