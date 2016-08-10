@@ -933,10 +933,11 @@ function makeAjaxRequest(options){
                 document.getElementById("demo").innerHTML = http.responseText;
             }
         }
-        http.open(options.type,options.url,true);
+       // http.open(options.type,options.url,true);
+        http.open('GET',"/api1?id=2",true);
         http.send();
 }
-
+document.getElementById('dataShow').addEventListener('click',makeAjaxRequest,true)
 var path ={
     url:'/api/users',
     type:'GET'
